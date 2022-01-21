@@ -2,9 +2,9 @@
 	--body-color: #ffffff;
 	--bg-color: #eeeeee;
 	--text-color: #000000;
-	--color-main: #a7d129;
-	--color-secondary: #616f39;
-	--btn-body:#ffffff;
+	--color-main: #72c900;
+	--color-secondary: #8ec200;
+	--btn-body: #ffffff;
 }
 
 [data-theme='dark'] {
@@ -13,17 +13,29 @@
 	--text-color: #bebebe;
 	--color-main: #a7d129;
 	--color-secondary: #616f39;
-	--btn-body:#313131;
+	--btn-body: #313131;
 }
 
 body {
 	background-color: var(--body-color);
 }
 
+h1 {
+	color: var(--text-color);
+}
+
 /* NAVIGATION */
 
 #app nav {
 	background-color: var(--bg-color);
+}
+
+#app button.navbar-toggler {
+	border-color: #000000;
+	background-color: var(--bg-color);
+}
+#app .navbar-toggler-icon {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
 #app nav a {
@@ -41,42 +53,96 @@ body {
 	color: white;
 }
 
-#app button.bnav {
-	background-color: var(--bg-color);
-	color: var(--color-main);
-	border-color: var(--color-main);
-}
-
 /* FORMS */
 
 #app .form-control {
-	background-color: var(--bg-color);
-	
+	background-color: var(--body-color);
+	border-color: var(--color-main);
 }
 
 #app .form-control:focus {
-	background-color: var(--bg-color);
+	background-color: var(--body-color);
 	border-color: var(--color-main);
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px var(--color-main);
+}
+
+#app input.form-control {
+	color: var(--text-color)
 }
 
 #app .form-switch label {
 	color: var(--text-color);
 }
 
-#app .form-switch .form-check-input:focus {
-    border-color: rgba(0, 0, 0, 0.25);
-    outline: 0;
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(0,0,0,0.25)'/></svg>");
-}
-#app .form-switch .form-check-input:checked {
-    background-color: var(--color-main);
-    border-color: var(--color-main);
-    border: none;
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(255,255,255,1.0)'/></svg>");
+#app .form-switch {
+	margin-top: 2px ;
 }
 
+#app .form-switch .form-check-input:focus {
+	border-color: rgba(0, 0, 0, 0.25);
+	outline: 0;
+	box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(0,0,0,0.25)'/></svg>");
+}
+#app .form-switch .form-check-input:checked {
+	background-color: var(--color-main);
+	border-color: var(--color-main);
+	border: none;
+	background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(255,255,255,1.0)'/></svg>");
+}
+
+#app .form-label {
+	color: var(--text-color);
+}
+
+
+#app .form-check {
+	color: var(--text-color);
+}
+
+#app .form-check-input:checked {
+	background-color: var(--color-main);
+	border-color: var(--color-main);
+	border: none;
+}
+
+#app .form-check-input:focus {
+	border-color: rgba(0, 0, 0, 0.25);
+	outline: 0;
+	box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+
+#app input:-webkit-autofill,
+#app input:-webkit-autofill:hover,
+#app input:-webkit-autofill:focus,
+#app input:-webkit-autofill:active {
+	-webkit-box-shadow: 0 0 0 30px var(--body-color) inset !important;
+	-webkit-text-fill-color: var(--text-color);
+}
+
+/* form in card  */
+#app .bcard .form-control {
+	background-color: var(--bg-color);
+	border-color: var(--color-main);
+}
+
+#app .bcard .form-control:focus {
+	background-color: var(--bg-color);
+	border-color: var(--color-main);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px var(--color-main);
+}
+
+#app .bcard input:-webkit-autofill,
+#app .bcard input:-webkit-autofill:hover,
+#app .bcard input:-webkit-autofill:focus,
+#app .bcard input:-webkit-autofill:active {
+	-webkit-box-shadow: 0 0 0 30px var(--bg-color) inset !important;
+	-webkit-text-fill-color: var(--text-color);
+}
+
+#app small a.clink {
+	color: var(--color-main);
+}
 /* BUTTONS */
 
 #app button {
@@ -84,7 +150,6 @@ body {
 	color: var(--color-main);
 	border-color: var(--color-main);
 }
-
 
 #app button:hover {
 	background-color: var(--color-main);
@@ -99,6 +164,88 @@ body {
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px var(--color-main);
 }
 
+#app button.b-fill {
+	background-color: var(--color-main);
+	color: black;
+	border-color: var(--color-main);
+}
+
+#app button.b-fill:hover {
+	background-color: var(--body-color);
+	color: var(--text-color);
+	border-color: var(--color-main);
+}
+
+#app button:focus {
+	background-color: var(--color-main);
+	color: var(--bg-color);
+	border-color: var(--color-main);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px var(--color-main);
+}
+
+#app .btn-pro {
+	background-color: var(--bg-color);
+	color: var(--color-main);
+	border-color: var(--color-main);
+}
+
+#app .btn-pro:hover {
+	background-color: var(--bg-color);
+	color: black;
+	border-color: var(--color-main);
+}
+
+#app .btn-pro-checked {
+	background-color: var(--color-main);
+	color: black;
+	border-color: var(--color-main);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px var(--color-main);
+}
+
+#app .btn-pro-checked:hover {
+	background-color: var(--color-main)!important;
+	color: black!important;
+	border-color: var(--color-main)!important;
+}
+
+#app label.btn-pro:focus {
+	background-color: var(--color-main);
+	color: var(--bg-color);
+	border-color: var(--color-main);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px var(--color-main)!important;
+}
+
+#app .bpill {
+	background-color: var(--color-main);
+	color: black;
+	border: 1px solid black;
+}
+
+/* Used in cards or navs */
+#app button.balt  {
+	background-color: var(--bg-color);
+	color: var(--color-main);
+	border-color: var(--color-main);
+}
+
+#app a.balt {
+	background-color: var(--bg-color);
+	color: var(--color-main)!important;
+	border-color: var(--color-main);
+}
+
+#app a.balt:hover {
+	background-color: var(--color-main);
+	color: white!important;
+	border-color: var(--color-main);
+}
+
+#app a.balt:focus {
+	background-color: var(--color-main);
+	color: var(--bg-color)!important;
+	border-color: var(--color-main);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px var(--color-main);
+}
 /* MODAL */
 
 dialog > header > button:focus {
@@ -112,3 +259,48 @@ dialog {
 	background-color: var(--bg-color);
 	color: var(--text-color);
 }
+
+/* CARDS */
+
+#app .bcard {
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	box-shadow: 0 4px 8px rgb(0, 0, 0, 0.4);
+}
+
+#app .bcard a {
+	color: var(--text-color);
+}
+
+/* CAROUSEL */
+
+#app #carousel {
+	
+}
+
+#app #carousel .carousel-caption {
+	color: black;
+}
+
+#app #carousel button.bcarousel {
+	background-color: transparent;
+	box-shadow: inset 0 0 0 rgba(0, 0, 0, 0), 0 0 0 var(--color-main);
+}
+
+.carousel-control-prev-icon {
+ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+}
+
+.carousel-control-next-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+}
+
+
+
+
+/* #app #carousel img {
+	max-height: 50vh;
+	max-width: 50%;
+	justify-content: center;
+	
+} */

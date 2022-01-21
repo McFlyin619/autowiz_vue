@@ -6,10 +6,12 @@ import store from './store'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/main.css'
+import BaseCard from '@/components/ui/BaseCard.vue';
 import BaseModal from '@/components/ui/BaseModal.vue';
 
 const app = createApp(App)
 app.use(store)
 app.use(router)
+app.component('base-card', BaseCard);
 app.component('base-modal', BaseModal);
 app.mount('#app')
