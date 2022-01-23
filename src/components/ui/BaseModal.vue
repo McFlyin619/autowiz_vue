@@ -124,6 +124,25 @@ menu {
 	margin: 0;
 }
 
+button {
+	background-color: var(--btn-body);
+	color: var(--color-main);
+	border-color: var(--color-main);
+}
+
+button:hover {
+	background-color: var(--color-main);
+	color: var(--bg-color);
+	border-color: var(--color-main);
+}
+
+button:focus {
+	background-color: var(--color-main);
+	color: var(--bg-color);
+	border-color: var(--color-main);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px var(--color-main);
+}
+
 .dialog-enter-from,
 .dialog-leave-to {
 	opacity: 0;

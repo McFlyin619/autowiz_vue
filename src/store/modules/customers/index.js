@@ -6,9 +6,7 @@ export default {
 	namespaced: true,
 	state() {
 		return {
-			user: null,
-			token: null,
-			didAutoLogout: false
+			customers: []
 		};
 	},
 	mutations,

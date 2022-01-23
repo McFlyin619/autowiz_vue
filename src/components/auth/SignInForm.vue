@@ -1,6 +1,10 @@
 <template>
 	<div>
-		<form @submit.prevent="signIn">
+		<div v-if="!userType" class="text-center mt-5">
+			<button @click="user('Pro')" class="btn balt me-5">I am a Pro</button>
+			<button @click="user('Customer')" class="btn balt">I am a Customer</button>
+		</div>
+		<form v-if="userType === true" @submit.prevent="signIn">
 			<div class="mb-3">
 				<label for="email" class="form-label">Email address</label>
 				<input v-model.trim="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" />
@@ -18,21 +22,36 @@
 export default {
 	data () {
 		return {
+			userType: false,
 			email: null,
-			password: null
+			password: null,
+			isPro: false,
+			isCustomer: false
 		}
 	},
 	methods: {
+		user(userType) {
+			if(userType === 'Pro') {
+				this.userType = true
+				this.isPro = true
+			} else {
+				this.userType = true
+				this.isCustomer = true
+			}
+		},
 		async signIn () {
 			const payload = {
 				email: this.email,
-				password: this.password
+				password: this.password,
+				isPro: this.isPro,
+				isCustomer: this.isCustomer
 			}
 			try {
 				await this.$store.dispatch('auth/signIn', payload);
 			} catch (error) {
 				this.error = error.message || 'Something failed!';
 			}
+			this.$router.push('/')
 		}
 	}
 }

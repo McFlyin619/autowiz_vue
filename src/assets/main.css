@@ -42,15 +42,20 @@ h1 {
 	color: var(--text-color);
 }
 
-#app .navbar-nav > li > .dropdown-menu {
+#app .dropdown-menu {
 	background-color: var(--bg-color);
 	border: none;
 }
 
-#app .navbar-nav > li > .dropdown-menu a:hover {
+#app .dropdown-menu a:hover {
 	background-color: var(--color-main);
 	border-radius: 4px;
 	color: white;
+}
+
+#app .nav-name {
+	margin-right: 10px;
+	
 }
 
 /* FORMS */

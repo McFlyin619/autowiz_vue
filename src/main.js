@@ -9,6 +9,7 @@ import './assets/main.css'
 import BaseCard from '@/components/ui/BaseCard.vue';
 import BaseModal from '@/components/ui/BaseModal.vue';
 
+
 const app = createApp(App)
 app.use(store)
 app.use(router)
