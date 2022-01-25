@@ -5,6 +5,7 @@
 	--color-main: #72c900;
 	--color-secondary: #8ec200;
 	--btn-body: #ffffff;
+	--bg-alt:#aaaaaa;
 }
 
 [data-theme='dark'] {
@@ -14,6 +15,7 @@
 	--color-main: #a7d129;
 	--color-secondary: #616f39;
 	--btn-body: #313131;
+	--bg-alt:#2c2c2c;
 }
 
 body {
@@ -221,9 +223,9 @@ h1 {
 }
 
 #app .bpill {
-	background-color: var(--color-main);
-	color: black;
-	border: 1px solid black;
+	color: var(--text-color);
+	background-color: var(--bg-alt);
+	/* border: 1px solid black; */
 }
 
 /* Used in cards or navs */

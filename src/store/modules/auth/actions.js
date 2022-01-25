@@ -67,13 +67,13 @@ export default {
 			context.commit('setToken', payload.token);
 		});
 	},
-	fetchPros(context) {
-		const dbRef = ref(db, 'pros');
-		onValue(dbRef, (snapshot) => {
-			const data = snapshot.val();
-			context.commit('setPros', data);
-		});
-	},
+	// fetchPros(context) {
+	// 	const dbRef = ref(db, 'pros');
+	// 	onValue(dbRef, (snapshot) => {
+	// 		const data = snapshot.val();
+	// 		context.commit('setPros', data);
+	// 	});
+	// },
 	tryLogin(context) {
 		const tokenExpiration = localStorage.getItem('tokenExpiration');
 		const uidLocal = localStorage.getItem('id')
@@ -91,7 +91,6 @@ export default {
 		}
 
 		const expiresIn = +tokenExpiration - new Date().getTime();
-		console.log(expiresIn)
 		if (expiresIn > 0) {
 			return;
 		}

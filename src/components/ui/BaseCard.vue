@@ -1,9 +1,9 @@
 <template>
 	<div class="card bcard">
 		<div class="card-body">
-			<h3 class="card-title text-center"><slot name="title"></slot></h3>
-			<h6 class="card-subtitle mb-2 text-muted"><slot name="subtitle"></slot></h6>
-			<p class="card-text">
+			<h1 class="card-title text-center"><slot name="title"></slot></h1>
+			<h5 class="card-subtitle mb-2 text-muted"><slot name="subtitle"></slot></h5>
+			<p class="card-text text-center">
 				<slot> </slot>
 			</p>
 		

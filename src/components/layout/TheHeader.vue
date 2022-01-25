@@ -49,7 +49,7 @@
 						</li>
 					</ul>
 					<router-link v-if="!isAuth" to="signin" class="nav-link btn balt">Sign In</router-link>
-					<router-link v-if="!isAuth" to="signup" class="nav-link">Sign Up</router-link>
+					<router-link id="v-step-0" v-if="!isAuth" to="signup" class="nav-link">Sign Up</router-link>
 					<ul v-else class="navbar-nav">
 						<li class="nav-item dropdown">
 							<a
@@ -100,7 +100,7 @@ export default {
 	},
 	watch: {
 		isAuth(val) {
-			if(val === true) this.wrongSignIn()
+			if(val === true && this.user === null) this.wrongSignIn()
 		}
 	},
 	computed: {

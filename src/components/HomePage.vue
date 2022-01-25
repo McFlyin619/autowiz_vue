@@ -5,6 +5,7 @@
 			<form @submit.prevent="filteredList">
 				<div class="d-block">
 					<input
+						id="v-step-1"
 						v-model="search"
 						class="form-control"
 						type="search"
@@ -13,7 +14,7 @@
 					/>
 				</div>
 				<div class="mt-2 text-center">
-					<button  class="btn b-fill" style="width: 25%">Search</button>
+					<button class="btn b-fill" style="width: 25%">Search</button>
 				</div>
 			</form>
 		</div>
@@ -23,7 +24,8 @@
 					{{ pro.businessName }}
 				</template>
 				<template v-slot:default>
-					<span v-for="ser in pro.services" :key="ser"> {{ ser }}</span>
+					<h6 class="mt-5">Services:</h6>
+					<span v-for="ser in pro.services" :key="ser" class="badge bpill me-1"> {{ ser }}</span>
 				</template>
 			</base-card>
 		</div>
@@ -70,8 +72,8 @@ export default {
 					}
 				}
 			}
-			this.filteredPros = filtered;
-			this.search = ''
+			this.filteredPros = [...new Set(filtered)];
+			this.search = '';
 		},
 		async loadPros() {
 			try {
