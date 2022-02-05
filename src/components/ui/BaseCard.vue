@@ -1,9 +1,9 @@
 <template>
 	<div class="card bcard">
 		<div class="card-body">
-			<h1 class="card-title text-center"><slot name="title"></slot></h1>
+			<h1 class="card-title" :class="{ 'text-center': textCenterTitle}"><slot name="title"></slot></h1>
 			<h5 class="card-subtitle mb-2 text-muted"><slot name="subtitle"></slot></h5>
-			<p class="card-text text-center">
+			<p class="card-text" :class="{ 'text-center': textCenterBody}">
 				<slot> </slot>
 			</p>
 		
@@ -27,6 +27,6 @@
 
 <script>
 export default {
-	props: ['link1', 'link2']
+	props: ['link1', 'link2', 'textCenterTitle', 'textCenterBody']
 }
 </script>

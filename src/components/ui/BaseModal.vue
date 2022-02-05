@@ -1,18 +1,18 @@
 <template>
 	<teleport to="body">
 		<div v-if="show" @click="tryClose" class="backdrop"></div>
-		<dialog open v-if="show" class="text-center bmodal">
-			<header v-if="title" >
+		<dialog open v-if="show" class="bmodal">
+			<header v-if="title" class="text-center" >
 				<slot name="header">
 					<h2 class="d-inline">{{ title }}</h2>
 					<button
-						class="d-inline float-end btn-close"
+						class="d-inline float-end btn-close balt"
 						aria-label="Close"
 						@click="tryClose"
 					></button>
 				</slot>
 			</header>
-			<section class="text-center">
+			<section>
 				<slot></slot>
 			</section>
 			<menu v-if="!fixed" class="mb-2">
@@ -124,11 +124,11 @@ menu {
 	margin: 0;
 }
 
-button {
+/* button {
 	background-color: var(--btn-body);
 	color: var(--color-main);
 	border-color: var(--color-main);
-}
+} */
 
 button:hover {
 	background-color: var(--color-main);

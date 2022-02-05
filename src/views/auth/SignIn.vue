@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<base-card class="mt-5">
+		<base-card class="mt-5" :textCenterTitle="true" :textCenterBody="true">
 			<template v-slot:title>
 				Sign In
 			</template>

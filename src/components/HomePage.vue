@@ -5,7 +5,7 @@
 			<form @submit.prevent="filteredList">
 				<div class="d-block">
 					<input
-						id="v-step-1"
+						id="v-step-2"
 						v-model="search"
 						class="form-control"
 						type="search"
@@ -18,16 +18,20 @@
 				</div>
 			</form>
 		</div>
-		<div class="row justify-content-between">
-			<base-card v-for="pro in filteredPros" :key="pro" class="mb-3">
-				<template v-slot:title>
-					{{ pro.businessName }}
-				</template>
-				<template v-slot:default>
-					<h6 class="mt-5">Services:</h6>
-					<span v-for="ser in pro.services" :key="ser" class="badge bpill me-1"> {{ ser }}</span>
-				</template>
-			</base-card>
+		<div class="row row-cols-1 row-cols-md-4 g-4">
+			<div class="col" v-for="pro in filteredPros" :key="pro">
+				<base-card class="mb-3 h-100">
+					<template v-slot:title>
+						{{ pro.businessName }}
+					</template>
+					<template v-slot:default>
+						<router-link class="btn balt btn-sm" :to="{name: 'Public Profile', params:{uid: pro.uid}}">View</router-link>
+						<h6 class="mt-5">Services:</h6>
+						<span v-for="ser in pro.services" :key="ser" class="badge bpill me-1"> {{ ser }}</span>
+						
+					</template>
+				</base-card>
+			</div>
 		</div>
 	</div>
 </template>

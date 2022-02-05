@@ -1,9 +1,7 @@
 <template>
 	<div>
-		<the-header></the-header>
-		<div class="container">
+		<the-header @help-tour="helpTour"></the-header>
 			<router-view />
-		</div>
 		<v-tour name="myTour" :steps="steps"></v-tour>
 		<the-footer></the-footer>
 	</div>
@@ -19,9 +17,10 @@ export default {
 	},
 	data() {
 		return {
+			help: false,
 			steps: [
 				{
-					target: '#v-step-0', // We're using document.querySelector() under the hood
+					target: '#v-step-0',
 					header: {
 						title: 'Get Started',
 					},
@@ -30,26 +29,47 @@ export default {
 				{
 					target: '#v-step-1',
 					header: {
+						title: 'Sign Up',
+					},
+					content: `Fill out the form and choose <strong>Find a pro</strong> or <strong> Become a pro</strong>`,
+					params: {
+						placement: 'bottom-start',
+					},
+					before: (type) =>
+						new Promise((resolve) => {
+							resolve(this.$router.push('/signup'))
+						}),
+				},
+				{
+					target: '#v-step-2',
+					header: {
 						title: 'Search',
 					},
 					content: 'Start searching for a pro!',
+					params: {
+						placement: 'bottom-start',
+					},
+					before: (type) =>
+						new Promise(resolve => {
+							resolve(this.$router.push('/'))
+						}),
+					after: (type) =>
+						new Promise(resolve => {
+							resolve(this.help = false)
+						})
 				},
-				// {
-				// 	target: '[data-v-step="2"]',
-				// 	content:
-				// 		"Try it, you'll love it!<br>You can put HTML in the steps and completely customize the DOM to suit your needs.",
-				// 	params: {
-				// 		placement: 'top', // Any valid Popper.js placement. See https://popper.js.org/popper-documentation.html#Popper.placements
-				// 	},
-				// },
 			],
 		};
 	},
-	mounted() {
-		this.$tours['myTour'].start();
-	},
 	created() {
 		this.$store.dispatch('auth/tryLogin');
+		this.$store.dispatch('pros/fetchPros')
 	},
+	methods: {
+		helpTour() {
+			this.help = true 
+			this.$tours['myTour'].start();
+		}
+	}
 };
 </script>

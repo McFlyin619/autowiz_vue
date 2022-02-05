@@ -1,6 +1,6 @@
 :root {
 	--body-color: #ffffff;
-	--bg-color: #eeeeee;
+	--bg-color: #e2e2e2;
 	--text-color: #000000;
 	--color-main: #72c900;
 	--color-secondary: #8ec200;
@@ -20,10 +20,43 @@
 
 body {
 	background-color: var(--body-color);
+	font-family: 'Ubuntu Condensed', sans-serif;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6, p {
 	color: var(--text-color);
+}
+
+.tmain {
+	color: var(--color-main);
+}
+
+.tsecondary {
+	color: var(--color-secondary);
+}
+
+.talt {
+	color: var(--bg-alt)
+}
+
+.ttext {
+	color: var(--text-color);
+}
+
+.bgmain {
+	background-color: var(--color-main);
+}
+
+.bgalt {
+	background-color: var(--bg-color);
+}
+
+
+/* LOADERS */
+.page-spinner {
+	color: var(--color-main);
+	height: 10rem;
+	width: 10rem;
 }
 
 /* NAVIGATION */
@@ -40,24 +73,46 @@ h1 {
 	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
+#app .nav-menu:not(:last-child) {
+	border-right: 1px solid var(--text-color);
+	padding: 0 4px 0 4px;
+}
+
+#app nav a.navbtn {
+	border-right: 1px solid var(--text-color);
+}
+
 #app nav a {
 	color: var(--text-color);
 }
 
+#app nav a:hover {
+	color: var(--color-main);
+}
+
 #app .dropdown-menu {
 	background-color: var(--bg-color);
-	border: none;
+	border-color:var(--bg-alt);
 }
 
 #app .dropdown-menu a:hover {
 	background-color: var(--color-main);
 	border-radius: 4px;
+	margin: 0 0 0 5px;
+	padding: 8px;
 	color: white;
+	box-shadow: -5px 10px 10px 0px rgb(0, 0, 0, 0.4);
+	font-size: 18px;
 }
 
 #app .nav-name {
 	margin-right: 10px;
 	
+}
+
+#app .info-center {
+	padding: 6px 15px 6px 15px;
+	border-radius: 4px;
 }
 
 /* FORMS */
@@ -85,6 +140,10 @@ h1 {
 	margin-top: 2px ;
 }
 
+#app .form-switch input {
+	cursor: pointer;
+}
+
 #app .form-switch .form-check-input:focus {
 	border-color: rgba(0, 0, 0, 0.25);
 	outline: 0;
@@ -105,6 +164,7 @@ h1 {
 
 #app .form-check {
 	color: var(--text-color);
+	/* padding: 0px; */
 }
 
 #app .form-check-input:checked {
@@ -127,29 +187,6 @@ h1 {
 	-webkit-text-fill-color: var(--text-color);
 }
 
-/* form in card  */
-#app .bcard .form-control {
-	background-color: var(--bg-color);
-	border-color: var(--color-main);
-}
-
-#app .bcard .form-control:focus {
-	background-color: var(--bg-color);
-	border-color: var(--color-main);
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px var(--color-main);
-}
-
-#app .bcard input:-webkit-autofill,
-#app .bcard input:-webkit-autofill:hover,
-#app .bcard input:-webkit-autofill:focus,
-#app .bcard input:-webkit-autofill:active {
-	-webkit-box-shadow: 0 0 0 30px var(--bg-color) inset !important;
-	-webkit-text-fill-color: var(--text-color);
-}
-
-#app small a.clink {
-	color: var(--color-main);
-}
 /* BUTTONS */
 
 #app button {
@@ -228,11 +265,117 @@ h1 {
 	/* border: 1px solid black; */
 }
 
-/* Used in cards or navs */
+/* MODAL */
+
+dialog > header > button:focus {
+	background-color: var(--bg-color);
+	color: var(--bg-color);
+	border-color: var(--color-main);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px var(--color-main);
+}
+
+dialog {
+	background-color: var(--bg-color);
+	color: var(--color-main);
+}
+
+.bmodal .form-control {
+	background-color: var(--bg-color);
+	border-color: var(--color-main);
+	color: var(--text-color);
+}
+
+.bmodal .form-control:focus {
+	background-color: var(--bg-color);
+	border-color: var(--color-main);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px var(--color-main);
+}
+
+.bmodal input:-webkit-autofill,
+.bmodal input:-webkit-autofill:hover,
+.bmodal input:-webkit-autofill:focus,
+.bmodal input:-webkit-autofill:active {
+	-webkit-box-shadow: 0 0 0 30px var(--bg-color) inset !important;
+	-webkit-text-fill-color: var(--text-color);
+}
+
+.balt {
+	background-color: var(--bg-color);
+	color: var(--color-main);
+	border-color: var(--color-main);
+}
+
+.balt:hover {
+	background-color: var(--color-main);
+	color: white!important;
+	border-color: var(--color-main);
+}
+
+.balt:focus {
+	background-color: var(--color-main);
+	color: var(--bg-color)!important;
+	border-color: var(--color-main);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px var(--color-main);
+}
+
+.modal-btn-center {
+	text-align: center;
+}
+
+.edit-name, .edit-business, .edit-address {
+	margin-bottom: 3rem;
+}
+
+.form-switch label {
+	color: var(--text-color);
+}
+
+.form-switch {
+	margin-top: 2px ;
+}
+
+.form-switch .form-check-input:focus {
+	border-color: rgba(0, 0, 0, 0.25);
+	outline: 0;
+	box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(0,0,0,0.25)'/></svg>");
+}
+.form-switch .form-check-input:checked {
+	background-color: var(--color-main);
+	border-color: var(--color-main);
+	border: none;
+	background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(255,255,255,1.0)'/></svg>");
+}
+
+/* CARDS */
+
+#app .bcard {
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	box-shadow: 0 4px 8px rgb(0, 0, 0, 0.4);
+}
+
+#app .bcard a {
+	color: var(--text-color);
+}
+
 #app button.balt  {
 	background-color: var(--bg-color);
 	color: var(--color-main);
 	border-color: var(--color-main);
+}
+
+#app .balt:hover {
+	background-color: var(--color-main);
+	color: white!important;
+	border-color: var(--color-main);
+}
+
+#app .balt:focus {
+	background-color: var(--color-main);
+	color: var(--bg-color)!important;
+	border-color: var(--color-main);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px var(--color-main);
 }
 
 #app a.balt {
@@ -253,30 +396,129 @@ h1 {
 	border-color: var(--color-main);
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px var(--color-main);
 }
-/* MODAL */
 
-dialog > header > button:focus {
+#app .bcard .form-control {
 	background-color: var(--bg-color);
-	color: var(--bg-color);
+	border-color: var(--color-main);
+}
+
+#app .bcard .form-control:focus {
+	background-color: var(--bg-color);
 	border-color: var(--color-main);
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px var(--color-main);
 }
 
-dialog {
+#app .bcard input:-webkit-autofill,
+#app .bcard input:-webkit-autofill:hover,
+#app .bcard input:-webkit-autofill:focus,
+#app .bcard input:-webkit-autofill:active {
+	-webkit-box-shadow: 0 0 0 30px var(--bg-color) inset !important;
+	-webkit-text-fill-color: var(--text-color);
+}
+
+#app small a.clink {
+	color: var(--color-main);
+}
+
+/* LIST GROUP HORIZONTAL */
+
+.list-group-item {
+	border-color: var(--bg-color);
+}
+
+/* V TOUR */
+
+.v-step__header, .v-step__arrow::before {
+	background-color: var(--color-main)!important;
+	color: black;
+}
+
+.v-step {
+	background-color: var(--bg-color)!important;
+	border: 1px solid var(--color-main)
+} 
+.v-step__content {
+	background-color: var(--bg-color)!important;
+	color: var(--text-color);
+}
+
+.v-step__button {
+	background-color: var(--bg-color)!important;
+	color: var(--color-main)!important;
+	border-color: var(--color-main)!important;
+}
+
+.v-step__button:hover {
+	background-color: var(--color-main)!important;
+	color: black!important;
+	border-color: var(--color-main)!important;
+}
+
+/* PROFILE */
+
+.profile-header {
+	background-color: var(--color-main);
+	color: var(--body-color);
+	padding: 20px;
+}
+
+.profile-img {
+	border: 2px solid var(--text-color);
+	border-radius: 6px;
+	padding: 0 2rem 0 2rem;
+	box-shadow: 0 10px 10px 0 rgb(0, 0, 0, 0.4);
+}
+
+.profile-name-container {
+	border: 2px solid var(--text-color);
+	border-radius: 6px;
+	padding: 0 2rem .75rem 2rem;
+	box-shadow: 0 10px 10px 0 rgb(0, 0, 0, 0.4);
+
+}
+
+.profile-name {
+	margin: 1rem 0 1rem 0;
+	border-bottom: 1px solid var(--text-color);
+
+}
+
+.ptab {
+	background-color: var(--body-color);
+	color: var(--text-color);
+}
+
+.ptab:hover {
+	background-color: var(--bg-alt);
+	color: white;
+}
+
+.ptab.active {
+	background-color: var(--bg-color)!important;
+	color: var(--text-color)!important;
+	border-color:var(--text-color) var(--text-color) var(--bg-color) !important;
+}
+
+.nav-tabs {
+	border-color: var(--text-color)!important;
+}
+
+.tab-content {
+	background-color: var(--bg-color);
+	border:1px solid;
+	border-color: var(--bg-color) var(--text-color) var(--text-color) var(--text-color);
+	border-radius: 0  0 4px 4px;
+	box-shadow: 0 10px 10px 0 rgb(0, 0, 0, 0.4);
+
+}
+
+.service-items {
 	background-color: var(--bg-color);
 	color: var(--text-color);
 }
 
-/* CARDS */
-
-#app .bcard {
-	background-color: var(--bg-color);
-	color: var(--text-color);
-	box-shadow: 0 4px 8px rgb(0, 0, 0, 0.4);
-}
-
-#app .bcard a {
-	color: var(--text-color);
+.about-border {
+	border-bottom: 1px solid var(--text-color);
 }
 
 /* CAROUSEL */
@@ -301,13 +543,3 @@ dialog {
 .carousel-control-next-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
 }
-
-
-
-
-/* #app #carousel img {
-	max-height: 50vh;
-	max-width: 50%;
-	justify-content: center;
-	
-} */

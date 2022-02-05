@@ -13,13 +13,19 @@ export default {
 				isCustomer: payload.isCustomer,
 				services: payload.services,
 				businessName: payload.businessName,
+				address1: payload.address1,
+				address2: payload.address2,
+				city: payload.city,
+				state: payload.state,
+				zip: payload.zip,
+				about: payload.about,
 				uid: userCred.user.uid,
 			};
 			if (payload.isPro === true) {
-				context.dispatch('pros/addPro', userInfo, { root: true });
+				context.dispatch('pros/addPro', userInfo, { root: true })
 			}
 			if (payload.isCustomer === true) {
-				context.dispatch('customers/addCustomer', userInfo, { root: true });
+				context.dispatch('customers/addCustomer', userInfo, { root: true })
 			}
 		});
 	},
@@ -56,6 +62,7 @@ export default {
 			const data = snapshot.val();
 			context.commit('setUser', data);
 			context.commit('setToken', payload.token);
+			localStorage.setItem('darkmode', payload.darkmode);
 		});
 	},
 	fetchProUser(context, payload) {
@@ -65,6 +72,7 @@ export default {
 			const data = snapshot.val();
 			context.commit('setUser', data);
 			context.commit('setToken', payload.token);
+			localStorage.setItem('darkmode', data.darkmode);
 		});
 	},
 	// fetchPros(context) {
@@ -79,6 +87,13 @@ export default {
 		const uidLocal = localStorage.getItem('id')
 		const tokenLocal = localStorage.getItem('token')
 		const user = localStorage.getItem('user')
+		const darkmode = localStorage.getItem('darkmode')
+
+		if (darkmode === true) {
+			document.body.setAttribute('data-theme', 'dark');
+		} else {
+			document.body.setAttribute('data-theme', 'light');
+		}
 
 		const payload = {
 			uid: uidLocal,
@@ -103,6 +118,7 @@ export default {
 		localStorage.removeItem('id');
 		localStorage.removeItem('token');
 		localStorage.removeItem('user');
+		localStorage.removeItem('darkmode');
 		localStorage.removeItem('tokenExpiration');
 		context.commit('setUser', null);
 		context.commit('setToken', null);
