@@ -521,6 +521,19 @@ dialog {
 	border-bottom: 1px solid var(--text-color);
 }
 
+/* REVIEWS */
+
+.review-container {
+	border: 2px solid var(--text-color);
+	border-radius: 4px;
+	padding: 10px;
+}
+
+.reviewed-by {
+	border-bottom: 1px solid var(--text-color);
+	padding-bottom: 5px;
+}
+
 /* CAROUSEL */
 
 #app #carousel {

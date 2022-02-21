@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<div v-if="!!error">{{ error }}</div>
 		<form @submit.prevent="signUp">
 			<div class="mb-3">
 				<label for="email" class="form-label">Email address</label>
@@ -176,7 +177,11 @@
 				</div>
 				<hr />
 			</div>
-			<button class="btn balt mb-3 mt-2">Create Account</button>
+			<button v-if="!isLoading" class="btn balt mb-3 mt-2">Create Account</button>
+			<button v-else class="btn balt mb-3 mt-2" type="button" disabled>
+				<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+				Creating Account...
+			</button>
 		</form>
 		<small
 			>Have an account? Sign in <router-link class="text-decoration-none clink" to="/signin">here</router-link>
@@ -197,6 +202,7 @@ export default {
 			error: null,
 			businessName: null,
 			services: [],
+			isLoading: false
 		};
 	},
 	watch: {
@@ -217,6 +223,7 @@ export default {
 	},
 	methods: {
 		async signUp() {
+			this.isLoading = true
 			const payload = {
 				email: this.email,
 				password: this.password,
@@ -288,11 +295,15 @@ export default {
 				},
 			};
 			try {
-				console.log(payload);
 				await this.$store.dispatch('auth/signUp', payload);
+				setTimeout(() => {
+					this.isLoading = false
+					this.$router.push('/')
+				}, 1500)
 			} catch (error) {
 				this.error = error.message || 'Something failed!';
 			}
+			// this.$router.go('/')
 			this.email = '';
 			this.password = '';
 			this.firstName = '';
